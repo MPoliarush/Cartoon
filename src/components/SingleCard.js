@@ -32,7 +32,7 @@ const SingleCard=(props)=>{
                     </div>
                     <div className='block'>
                         Type
-                        <span className='info'>{props.data.type}</span>
+                        <span className='info'>{props.data.type.length===0 ?'Unknown' : props.data.type}</span>
                     </div>
                 </div>
                 
