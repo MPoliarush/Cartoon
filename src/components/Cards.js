@@ -14,7 +14,7 @@ const clickHandler = (e)=>{
                 {props.list.map(item=>{
                     return (
                         <div className="card_container" key={Math.random()} id={item.id} onClick={clickHandler}>
-                            <Link to={'/card/'+item.id}>
+                            <Link to={'Cartoon/card/'+item.id}>
                                 <img src={item.img}/>
                                 <p>{item.name}</p>
                                 <p>{item.species}</p>

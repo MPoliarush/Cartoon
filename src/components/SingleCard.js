@@ -8,7 +8,7 @@ const SingleCard=(props)=>{
    
     return (
        <div className="single_card_main">
-            <Link to='/'><p className='goBack'><span><img src={arr}/></span>GO BACK</p></Link>
+            <Link to='/Cartoon/'><p className='goBack'><span><img src={arr}/></span>GO BACK</p></Link>
             <div className="card_container_single">
                 <img className='singleIMG' src={props.data.img}/>
                 <h3>{props.data.name}</h3>
