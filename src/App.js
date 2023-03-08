@@ -13,8 +13,10 @@ function App() {
 
 const [usedata,setUseData] = useState()
 
+
+
 const router = createBrowserRouter([
-    {path:'/', element:<Homepage trans={setUseData}/> },
+    {path:'/', element:<Homepage trans={setUseData} /> },
      {path:'/card/:id', element:<SingleCard data={usedata}/> },
   ])
 

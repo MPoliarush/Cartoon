@@ -10,7 +10,7 @@ const [isClicked,setClicked] = useState(false)
 
 const clickHandler = (e)=>{
     setClicked(false)
-    console.log(e.currentTarget.id)
+
     props.onClick(e.currentTarget.id)
 }
 

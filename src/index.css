@@ -1,4 +1,6 @@
-
+html{
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -16,7 +18,6 @@ body {
 main{
   width: 73%;
   margin: 0 auto;
-  /* border: solid black; */
 }
 
 .mainIMG{
@@ -27,31 +28,30 @@ main{
 }
 
 input{
-  width:89%;
+  width:100%;
+  margin-left: 0;
   background-image: url(./images/Icon.png);
   background-repeat: no-repeat;
   background-position: 14px ;
   padding: 18px 47px 19px;
   border-radius: 8px;
   margin-top: 15px;
-  margin-left: 17px;
   margin-bottom: 60px;
   border-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-shrink: 1;
   align-items: center;
   letter-spacing: 1px;
+  box-sizing: border-box;
 }
 
 .cardsWrapper{
   width: 100%;
-  /* border: solid black 1px; */
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   gap:1.9%;
-  padding-left: 18px;
-  
+  justify-content: center;
 }
 
 .card_container{
@@ -61,8 +61,8 @@ input{
   border-radius: 4px;
   margin: 0px 0 25px;
   overflow: hidden;
-transition: 0.5s;
-font-family: 'Roboto', sans-serif;
+  transition: 0.5s;
+  font-family: 'Roboto', sans-serif;
 }
 
 .card_container:hover{
@@ -211,3 +211,23 @@ letter-spacing: 0.25px;
 color: #6E798C;
 }
 
+
+@media (max-width:1070px) {
+  
+input{
+  width:100%;
+  background-image: url(./images/Icon.png);
+  background-repeat: no-repeat;
+  background-position: 14px ;
+  padding: 18px 47px 19px;
+  border-radius: 8px;
+  margin-top: 15px;
+  margin-bottom: 60px;
+  border-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-shrink: 1;
+  align-items: center;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+}
+}

@@ -10,10 +10,12 @@ function Homepage(props) {
 
   const [fetchedData, setFetchedData]=useState([])
   const [filtered, setFiltered] =useState([])
+
   const [inputData,setInputData] = useState(' ')
 
   const [isCardclicked, setCardClicked] = useState('false')
   const [clickedData, setClickedData] = useState()
+
 
   // // const navigate = useNavigate();
 
@@ -48,16 +50,19 @@ function Homepage(props) {
       }
     })
     characters = characters.sort((a,b)=>(a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
-    console.log(characters)
 
     setFetchedData(characters)
     setFiltered(characters)
   }
 
-
   useEffect(()=>{
-   getItems()
+    
+    getItems()
+    
   },[])
+
+
+  
 
 
   useEffect(()=>{
@@ -65,25 +70,26 @@ function Homepage(props) {
       filteredNames = filtered.filter(item=>{
         return item.name.includes(inputData)
       })
-
+      
       setFetchedData(filteredNames)
-   
+      
   },[inputData])
+
 
 
   let clickedId;
 
   function cardHandler(id){
-
-    console.log(fetchedData)
     setCardClicked(false)
     clickedId = fetchedData.filter(item=>{
         return item.id == id
       })
 
     setClickedData(...clickedId)
-    console.log(...clickedId)
+ 
     props.trans(...clickedId)
+
+    localStorage.setItem('filteredData', JSON.stringify(fetchedData))
   }
 
  
