@@ -34,12 +34,10 @@ const SingleCard=(props)=>{
                         Type
                         <span className='info'>{props.data.type.length===0 ?'Unknown' : props.data.type}</span>
                     </div>
-                </div>
-                
+                </div>     
         </div>
-    </div>            
-        
-        )
+    </div>              
+    )
 }
 
 export default SingleCard

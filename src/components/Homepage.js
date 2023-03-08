@@ -1,6 +1,5 @@
 import React, {useState,useEffect} from 'react'
 
-
 import img from '../images/first.png'
 import Cards from './Cards';
 import SingleCard from './SingleCard';
@@ -17,20 +16,10 @@ function Homepage(props) {
   const [clickedData, setClickedData] = useState()
 
 
-  // // const navigate = useNavigate();
-
-  
-  // const router = createBrowserRouter([
-  //   {path:'/', element:<App /> },
-  //   // {path:'/cards', element:<ProductsPage /> },
-  // ])
-
-
 
   const inputHandler = (event)=>{
     setInputData(event.target.value)
   }
-
 
 
   async function getItems(){
@@ -55,14 +44,13 @@ function Homepage(props) {
     setFiltered(characters)
   }
 
+
+
+
   useEffect(()=>{
-    
     getItems()
-    
   },[])
 
-
-  
 
 
   useEffect(()=>{
@@ -88,14 +76,11 @@ function Homepage(props) {
     setClickedData(...clickedId)
  
     props.trans(...clickedId)
-
-    localStorage.setItem('filteredData', JSON.stringify(fetchedData))
   }
 
  
 
   return (
-    
         <div className="App">
           {isCardclicked ? <main>
             <img className='mainIMG' src={img} />
@@ -104,7 +89,6 @@ function Homepage(props) {
           </main>:<SingleCard ></SingleCard>
           }
         </div>
-
   );
 }
 
