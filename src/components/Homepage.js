@@ -10,16 +10,51 @@ function Homepage(props) {
   const [fetchedData, setFetchedData]=useState([])
   const [filtered, setFiltered] =useState([])
 
-  const [inputData,setInputData] = useState(' ')
+  const [inputData,setInputData] = useState('')
 
   const [isCardclicked, setCardClicked] = useState('false')
-  const [clickedData, setClickedData] = useState()
+  const [isDataFiltered, setDataFiltered]= useState('empty')
 
 
 
   const inputHandler = (event)=>{
     setInputData(event.target.value)
+    let filteredNames = filtered.filter(item=>{
+            return item.name.includes(event.target.value)
+    })
+
+    if(event.target.value==0){
+      localStorage.setItem('local', 'empty')
+      localStorage.setItem('name', 'empty')
+    } else {
+      console.log('decresae')
+      localStorage.setItem('local', JSON.stringify(filteredNames))
+      localStorage.setItem('name', event.target.value)
+    }
+
+    if(filteredNames){
+      setDataFiltered(filteredNames)
+      setFetchedData(filteredNames)
+    }
+     
   }
+
+
+  useEffect(()=>{
+    if (localStorage.getItem('name')!=='empty'){
+      setInputData(localStorage.getItem('name'))
+    } 
+    console.log('first')
+    if (localStorage.getItem('local')=='empty' || localStorage.getItem('local')==undefined || localStorage.getItem('local')==[] ){
+      getItems()
+    } else if ( localStorage.getItem('local')!=='empty' ){
+      const data = JSON.parse(localStorage.getItem('local'))
+      setFetchedData(data)
+    }
+
+  },[localStorage.getItem('local')])
+
+  
 
 
   async function getItems(){
@@ -43,25 +78,21 @@ function Homepage(props) {
     setFetchedData(characters)
     setFiltered(characters)
   }
+  
+  
 
-
-
-
-  useEffect(()=>{
-    getItems()
-  },[])
-
-
-
-  useEffect(()=>{
-      let filteredNames;
-      filteredNames = filtered.filter(item=>{
-        return item.name.includes(inputData)
-      })
+  // useEffect(()=>{
+  //   console.log("second")
+  //   if(localStorage.getItem('local')!=='empty'){
+  //     let filteredNames;
+  //     filteredNames = filtered.filter(item=>{
+  //       return item.name.includes(inputData)
+  //     })
       
-      setFetchedData(filteredNames)
-      
-  },[inputData])
+  //     setFetchedData(filteredNames)
+  //   }
+       
+  // },[setFetchedData])
 
 
 
@@ -73,22 +104,24 @@ function Homepage(props) {
         return item.id == id
       })
 
-    setClickedData(...clickedId)
- 
+
     props.trans(...clickedId)
+
   }
 
  
 
   return (
+    
         <div className="App">
           {isCardclicked ? <main>
             <img className='mainIMG' src={img} />
-            <input onChange={inputHandler} placeholder='Filter by name...' />
+            <input onChange={inputHandler} placeholder='Filter by name...' value={inputData}/>
             <Cards list={fetchedData} onClick={cardHandler} />
           </main>:<SingleCard ></SingleCard>
           }
         </div>
+
   );
 }
 
